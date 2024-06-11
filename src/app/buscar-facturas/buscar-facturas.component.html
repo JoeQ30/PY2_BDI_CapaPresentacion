@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="container d-flex flex-column align-items-center p-3 my-3 bg-white text-center border shadow-lg" style="max-width: 500px;">
+    <div class="custom-title p-3 mb-3" style="min-width: 475px;">
+      <h2 class="font-weight-bold">Buscar Facturas</h2>
+    </div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group" style="min-width: 350px; padding: 20px;">
+        <label for="phoneNumber" style = "font-size: 20px;">Número de Teléfono:</label>
+        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" name="phoneNumber" required>
+        <!--
+        <div *ngIf="formEmpleados.get('phoneNumber')?.errors?.['required']" class="text-danger">
+          El número es requerido.
+        </div>
+        <div *ngIf="formEmpleados.get('phoneNumber')?.errors?.['pattern']" class="text-danger">
+          El número debe ser un numero entero.
+        </div>
+        -->
+      </div>
+      <button type="submit" class="custom-btn" (click)="irDetalleFactura()">Buscar</button>
+    </form>
+  </div>
+</div>
