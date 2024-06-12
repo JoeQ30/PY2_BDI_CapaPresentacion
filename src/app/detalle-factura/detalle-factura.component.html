@@ -1,2 +1,71 @@
+<nav class="navbar" style="background-color: #132a42;"><!--Esto es el encabezado-->
+    <div class="container-fluid">
+        <div class="col-md-3">
+          <h1 style="color: white;">Detalles de la Factura Seleccionada</h1>
+        </div>
+        <!--<div class="col-md-3">
+            <form [formGroup]="formBuscar" class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Buscar..." formControlName="buscar">
+                <button class="btn btn-light" type="button">Buscar</button>
+            </form>    
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-danger btn-sm"> Logout</button>
+        </div>-->
+    </div> 
+</nav>
 
-<h2>Detalle de Factura</h2>
+<div class="col-md-12 p-2">
+    <!--<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#agregarEmpleado"><i ></i> Facturas</button>-->
+    <table class="table mt-2 table-bordered">
+        <thead class="table-primary">
+            <tr>
+                <th>Propiedad</th>
+                <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+                <td>Tafifa básica</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Cantidad de minutos en exceso a minutos en tarifa básica</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Cantidad de giga en uso de datos en exceso a tarifa básica</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Cantidad de minutos de llamadas a familiares</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Cobro por 911</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Total cobro por llamadas al 110</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Total cobro por llamadas a números 900</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Total cobro por llamadas a números 800 (recibidas)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Detalle de cada una de las llamadas, en orden cronológico de fecha</td>
+                <td><button type="button" class="custom-btn"  data-bs-toggle="modal" data-bs-target="#modificarEmpleados" >Detalle</button></td>
+            </tr>
+            <tr>
+                <td>Detalle por uso de datos, en orden cronológico de fecha</td>
+                <td><button type="button" class="custom-btn"  data-bs-toggle="modal" data-bs-target="#modificarEmpleados" >Detalle</button></td>
+            </tr>
+          </tbody>
+      </table>
+</div>
+

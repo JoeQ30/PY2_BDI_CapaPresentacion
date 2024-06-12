@@ -11,11 +11,14 @@ export class RedireccionesService {
   haciaBuscarFacturas() {
     this.router.navigate(['/buscar-facturas']);
   }
-  haciaDetalleFacturas() {
-    this.router.navigate(['/detalle-factura']);
+  haciaDetalleFacturas(state?: any) {
+    this.router.navigate(['/detalle-factura'], { state });
   }
   haciaEstadoCuentaEmpresa() {
     this.router.navigate(['/estado-cuenta-empresa']);
+  }
+  haciaMostrarFactura() {
+    this.router.navigate(['/mostrar-factura'])
   }
 
 

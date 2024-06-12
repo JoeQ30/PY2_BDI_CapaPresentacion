@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FacturaService {
-  private apiUrl = 'https://api.example.com/facturas';  // Cambia esto por la URL real de tu API
+  private apiUrl = 'https://api.example.com/facturas';  // Cambia esto por la URL real de la API
 
   constructor(private http: HttpClient) { }
 

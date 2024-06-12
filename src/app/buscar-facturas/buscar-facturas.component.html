@@ -6,17 +6,12 @@
     <form (ngSubmit)="onSubmit()">
       <div class="form-group" style="min-width: 350px; padding: 20px;">
         <label for="phoneNumber" style = "font-size: 20px;">Número de Teléfono:</label>
-        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" name="phoneNumber" required>
-        <!--
-        <div *ngIf="formEmpleados.get('phoneNumber')?.errors?.['required']" class="text-danger">
-          El número es requerido.
-        </div>
-        <div *ngIf="formEmpleados.get('phoneNumber')?.errors?.['pattern']" class="text-danger">
-          El número debe ser un numero entero.
-        </div>
-        -->
+        <input type="text" class="form-control" formControlName="phoneNumber">
+        <div *ngIf="formUsuarios.get('phoneNumber')?.errors?.['required'] && incorrecto1 === 0" class="text-danger">
+          El nombre es requerido.
       </div>
-      <button type="submit" class="custom-btn" (click)="irDetalleFactura()">Buscar</button>
+      </div>
+      <button type="submit" class="custom-btn" data-bs-dismiss="modal" (click)="irMostrarFactura()">Buscar</button>
     </form>
   </div>
 </div>
