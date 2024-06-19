@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'portal-administrador' title`, () => {
+  it(`should have the 'proyecto3' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('portal-administrador');
+    expect(app.title).toEqual('proyecto3');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, portal-administrador');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, proyecto3');
   });
 });

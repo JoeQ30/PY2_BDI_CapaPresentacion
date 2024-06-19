@@ -1,0 +1,171 @@
+
+<nav class="navbar" style="background-color: #112254;">
+  <div class="container-fluid">
+      <div class="row w-110">
+          <div class="col-md-6">
+              <h1 style="color: rgb(250, 250, 250);">Sistema de facturación telefónica</h1>
+          </div>
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+              <form [formGroup]="formBuscar" class="d-flex">
+                  <input class="form-control me-2" type="text" placeholder="Número de teléfono..." formControlName="buscar">
+                  <div *ngIf="formBuscar.get('buscar')?.errors?.['required']" class="text-light">
+                    El número es requerido.
+                 </div>
+                  <button class="btn btn-outline-light" (click)="listN()" type="button">Buscar</button>
+              </form>
+          </div>
+      </div>
+    </div>
+</nav>
+
+<div class="col-md-12 p-2">
+    <table class="table mt-2 table-bordered">
+        <thead class="table-primary">
+          <tr>
+             <th>Número</th>
+             <th>Fecha</th>
+             <th>Estado</th>
+             <th>Estado</th>
+             <th>Monto Total</th>
+             <th>Detalle</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listFacturas">
+              <td>{{item.factura}}</td>
+              <td>{{item.fecha}}</td>
+              <td>{{item.esCerrada === 1 ? 'Cerrada' : 'No cerrada'}}</td>
+              <td>{{item.esActivo === 0 ? 'Pagada' : 'No pagada'}}</td>
+              <td>{{item.montoTotal}}</td>
+               <td>
+                    <button type="button" class="btn btn-outline-primary"  (click)="setFactura(item.factura)" data-bs-toggle="modal" data-bs-target="#listarDetalles">Detalles</button>
+                  
+                </td>
+              </tr> 
+         
+        </tbody>
+      </table>
+</div>
+
+<!--Modals-->
+<div class="modal" id="listarDetalles" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Detalles</h5>
+      </div>
+      <div class="modal-body">
+        <table class="table mt-2 table-bordered">
+          <thead class="table-primary">
+            <tr>
+              <th>Monto Total</th>
+              <th>Monto Total IVA</th>
+              <th>Monto de multa</th>
+              <th>Tarifa Basica</th>
+              <th>Exceso Minutos</th>
+              <th>Exceso Gigas</th>
+              <th>Llamadas Familiares</th>
+              <th>Llamadas 911</th>
+              <th>Llamadas 110</th>
+              <th>Llamadas 900</th>
+              <th>Llamadas 800</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of listDetalles">
+                <td>{{item.montoTotal}}</td>
+                <td>{{item.montoTotalIVA}}</td>
+                <td>{{item.montoMulta}}</td>
+                <td>{{item.tarifaBasica}}</td>
+                <td>{{item.minutosExceso}}</td>
+                <td>{{item.gigasExceso}}</td>
+                <td>{{item.llamadasFamiliares}}</td>
+                <td>{{item.llamadas911}}</td>
+                <td>{{item.llamadas110}}</td>
+                <td>{{item.llamadas900}}</td>
+                <td>{{item.llamadas800}}</td>
+              </tr> 
+          </tbody>
+        </table>
+          
+      </div>
+      <div class="modal-footer">
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-primary" type="button" (click)="listL()" data-bs-toggle="modal" data-bs-target="#listarLlamadas" >Historial de Llamadas</button>
+          <button class="btn btn-primary" type="button" (click)="listU()" data-bs-toggle="modal" data-bs-target="#listarUD" >Historial de Uso de Datos</button>
+        </div>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Regresar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="listarLlamadas" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Historial de Llamadas</h5>
+      </div>
+      <div class="modal-body">
+        <table class="table mt-2 table-bordered">
+          <thead class="table-primary">
+            <tr>
+              <th>Emisor</th>
+              <th>Receptor</th>
+              <th>Inicio</th>
+              <th>Final</th>
+              <th>Fecha de llamada</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of listLL">
+                <td>{{item.numDesde}}</td>
+                <td>{{item.numA}}</td>
+                <td>{{item.inicio}}</td>
+                <td>{{item.final}}</td>
+                <td>{{item.fecha}}</td>
+              </tr> 
+           
+          </tbody>
+        </table>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="#listarLlamadas" data-bs-toggle="modal" data-bs-target="#listarDetalles">Regresar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="listarUD" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Historial de Uso de Datos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+      </div>
+      <div class="modal-body">
+        <table class="table mt-2 table-bordered">
+          <thead class="table-primary">
+            <tr>
+              <th>Número</th>
+              <th>Gigas Usados</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of listUD">
+                <td>{{item.numero}}</td>
+                <td>{{item.qgigas}}</td>
+                <td>{{item.fecha}}</td>
+              </tr> 
+          </tbody>
+        </table>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="#listarUD" data-bs-toggle="modal" data-bs-target="#listarDetalles">Regresar</button>
+      </div>
+    </div>
+  </div>
+</div>
